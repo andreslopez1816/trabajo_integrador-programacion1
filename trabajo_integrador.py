@@ -7,12 +7,31 @@ import time
 lista_paises = []  # Lista global para almacenar los países en memoria durante la ejecución# Lista global para almacenar los países en memoria durante la ejecución
 
 def volviendo_al_menu():
+    """
+    Muestra un mensaje de pausa para que el usuario pueda leer
+    los resultados obtenidos antes de regresar al menú principal.
+
+    No recibe parámetros ni retorna valores.
+    """
+
     print('\nPulse una tecla para continuar')
     input()
     print('Volviendo al menú principal...')
     time.sleep(1)
 
 def cargar_datos_csv(ruta_archivo: str) -> list:
+    """
+    Lee un archivo CSV y carga sus registros en la lista de países.
+
+    Cada fila del archivo se convierte en un diccionario con las claves:
+    nombre, poblacion, superficie y continente.
+
+    Parámetros:
+        ruta_archivo (str): Ruta del archivo CSV a leer.
+
+    Retorna:
+        list: Lista de países cargados desde el archivo.
+    """
 
     try:
         # Abrimos el archivo en modo lectura ('r') con codificación utf-8 por los acentos
@@ -41,12 +60,24 @@ def cargar_datos_csv(ruta_archivo: str) -> list:
         print(f"[Error] Ocurrió un fallo inesperado al leer el archivo: {e}")
 
     return lista_paises
- 
+
 # =====================================================================
 # 1. Cargar un país manualmente por Consola
 # =====================================================================
-  
+
 def cargar_desde_consola(lista_paises: list) -> None:  
+    """
+    Solicita al usuario los datos de un país y lo agrega a la lista.
+
+    Realiza validaciones para evitar campos vacíos y controlar
+    que la población y la superficie sean números enteros positivos.
+
+    Parámetros:
+        lista_paises (list): Lista donde se almacenará el nuevo país.
+
+    Retorna:
+        None
+    """
     
     print("\n--- Carga Pais Manual por Consola ---\n")
 
@@ -77,11 +108,11 @@ def cargar_desde_consola(lista_paises: list) -> None:
 
     # 4. Validar Continente (No vacío) 
     continente_menu =   {1: "África",
-                         2: "América",
-                         3: "Asia",
-                         4: "Europa",
-                         5: "Oceanía",
-                         6: "Antártida"}
+                        2: "América",
+                        3: "Asia",
+                        4: "Europa",
+                        5: "Oceanía",
+                        6: "Antártida"}
 
     print()
 
@@ -124,6 +155,19 @@ def cargar_desde_consola(lista_paises: list) -> None:
 # =====================================================================
 
 def actualizar_pais(lista_paises: list) -> None:
+    """
+    Permite modificar la población, la superficie o ambos datos
+    de un país previamente cargado.
+
+    El país se busca por nombre y se validan los nuevos valores
+    ingresados por el usuario.
+
+    Parámetros:
+        lista_paises (list): Lista de países cargados en memoria.
+
+    Retorna:
+        None
+    """
 
     print("\n--- Actualizar Datos de País ---\n")
 
@@ -161,7 +205,7 @@ def actualizar_pais(lista_paises: list) -> None:
                 if pais["superficie"] < 0 or pais["poblacion"]< 0:
                     print("[Error] La superficie o la población no pueden ser negativas.") 
                     return
-                               
+                
                 print(f"\n[Éxito] ¡Datos de {pais['nombre']} actualizados!")
                 volviendo_al_menu() 
                 return # Terminamos la función con éxito
@@ -180,6 +224,18 @@ def actualizar_pais(lista_paises: list) -> None:
 # =====================================================================
 
 def buscar_pais_nombre(lista_paises: list) -> None:
+    """
+    Busca países por nombre utilizando coincidencia parcial
+    o exacta, sin distinguir mayúsculas y minúsculas.
+
+    Muestra en pantalla todos los países encontrados.
+
+    Parámetros:
+        lista_paises (list): Lista de países cargados en memoria.
+
+    Retorna:
+        None
+    """
 
     if not lista_paises:
         print("[Aviso] No hay países cargados. Use la opción 1 primero.")
@@ -206,13 +262,27 @@ def buscar_pais_nombre(lista_paises: list) -> None:
         print(f"[Aviso] No se encontró el país '{busqueda}'.")
 
     volviendo_al_menu()
-         
+
 # =====================================================================
 # 4. Filtrar paises
 # =====================================================================
 
 def filtrar_paises(lista_paises: list) -> None:
-    
+    """
+    Filtra países según distintos criterios definidos por el usuario.
+
+    Permite realizar filtros por:
+        - Continente.
+        - Rango de población.
+        - Rango de superficie.
+
+    Parámetros:
+        lista_paises (list): Lista de países cargados en memoria.
+
+    Retorna:
+        None
+    """
+
     print("\n--- Filtrar países ---\n")
 
     #Validamos primero si hay datos en el sistema
@@ -285,6 +355,23 @@ def filtrar_paises(lista_paises: list) -> None:
 # =====================================================================
 
 def ordenar_paises(lista_paises: list) -> None:
+    """
+    Ordena los países según el criterio seleccionado por el usuario.
+
+    Los criterios disponibles son:
+        - Nombre.
+        - Población.
+        - Superficie.
+
+    Además permite elegir entre orden ascendente
+    o descendente.
+
+    Parámetros:
+        lista_paises (list): Lista de países cargados en memoria.
+
+    Retorna:
+        None
+    """
 
     if not lista_paises:
         print("[Aviso] No hay países cargados. Use la opción 1 primero.")
@@ -347,15 +434,23 @@ def ordenar_paises(lista_paises: list) -> None:
 # =====================================================================
 
 def mostrar_estadisticas(lista_paises: list) -> None:
+    """
+    Calcula y muestra estadísticas generales del conjunto de países.
 
-    """Calcula y muestra:
+    Estadísticas disponibles:
+        - País con mayor población.
+        - País con menor población.
+        - Promedio de población.
+        - Promedio de superficie.
+        - Cantidad de países por continente.
 
-    País con mayor y menor población.
+    Parámetros:
+        lista_paises (list): Lista de países cargados en memoria.
+
+    Retorna:
+        None
+    """
     
-    Promedio de población y superficie.
-    
-    Cantidad de países por continente."""
-       
     if not lista_paises:
         print("[Aviso] No hay países cargados. Use la opción 1 primero.")
         return
@@ -410,6 +505,19 @@ def mostrar_estadisticas(lista_paises: list) -> None:
 # 7. Guardar cambios y Salir
 # =====================================================================
 def guardar_datos_csv(ruta_archivo: str, lista_paises: list) -> None:
+    """
+    Guarda la información de los países en un archivo CSV.
+
+    Si el archivo existe, su contenido será sobrescrito con
+    los datos actuales almacenados en memoria.
+
+    Parámetros:
+        ruta_archivo (str): Ruta del archivo CSV destino.
+        lista_paises (list): Lista de países a guardar.
+
+    Retorna:
+        None
+    """
 
     if not lista_paises:
         print("[Aviso] No hay países para guardar. Use la opción 1 primero.")
@@ -435,7 +543,13 @@ def guardar_datos_csv(ruta_archivo: str, lista_paises: list) -> None:
 # =====================================================================
 
 def mostrar_menu() -> None:
-    """Imprime las opciones disponibles en la consola."""
+    """
+    Muestra en pantalla el menú principal del sistema
+    con todas las operaciones disponibles.
+
+    Retorna:
+        None
+    """
 
     print(  "\n========================================"
             "      SISTEMA DE GESTIÓN DE PAÍSES      "
@@ -454,7 +568,20 @@ def mostrar_menu() -> None:
 # =====================================================================
 
 def ejecutar_sistema():
-    """Función principal que controla el flujo de la aplicación."""
+    """
+    Función principal del programa.
+
+    Se encarga de:
+        - Cargar los datos iniciales desde el archivo CSV.
+        - Mostrar el menú principal.
+        - Gestionar la interacción con el usuario.
+        - Ejecutar la funcionalidad seleccionada.
+        - Guardar los cambios al finalizar.
+
+    Retorna:
+        None
+    """
+    
     RUTA_CSV = "paises.csv" # Asegurense de tener este archivo en la raíz del proyecto
     
     # Carga inicial de datos
@@ -473,7 +600,7 @@ def ejecutar_sistema():
         elif opcion == "4":
             filtrar_paises(datos_paises)
         elif opcion == "5":
-             ordenar_paises(datos_paises)
+            ordenar_paises(datos_paises)
         elif opcion == "6":
             mostrar_estadisticas(datos_paises)
         elif opcion == "7":
