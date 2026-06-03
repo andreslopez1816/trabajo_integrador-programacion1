@@ -3,7 +3,7 @@ Trabajo Práctico Integrador → Gestión de Datos de Países en Python: filtros
 
 Entregables Obligatorios
 
-**Video explicativo:** [Ver video demostrativo](cuandotengamosellinkloponemosaca)
-**Documentación:** [Ver documento online ](./cuandotengamosellinkloponemosaca.pdf) 
+**Video explicativo:** [Ver video demostrativo](https://youtu.be/4EjmPlYeXIs)
+**Documentación:** [Ver documento online ](https://docs.google.com/document/d/1j7aPsfgI5sGRZ7qZ_FgY_9Jdt3zrUWgM995JsRw8ldY/edit?usp=sharing) 
 
-(También podés encontrar el archivo `comolepongamosalarchivo.pdf` directamente en la raíz de este repositorio).
+(También podés encontrar el archivo `Programacion 1 - TP Integrador - Adres Lopez y Alejandro Ledesma` directamente en la raíz de este repositorio).
