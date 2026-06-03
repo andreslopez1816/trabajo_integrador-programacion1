@@ -6,4 +6,4 @@ Entregables Obligatorios
 **Video explicativo:** [Ver video demostrativo](https://youtu.be/4EjmPlYeXIs)
 **Documentación:** [Ver documento online ](https://docs.google.com/document/d/1j7aPsfgI5sGRZ7qZ_FgY_9Jdt3zrUWgM995JsRw8ldY/edit?usp=sharing) 
 
-(También podés encontrar el archivo `Programacion 1 - TP Integrador - Adres Lopez y Alejandro Ledesma` directamente en la raíz de este repositorio).
+(También podés encontrar el archivo `Programacion 1 - TP Integrador - Andres Lopez y Alejandro Ledesma` directamente en la raíz de este repositorio).
